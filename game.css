@@ -1,0 +1,44 @@
+body {
+    background: grey;
+}
+
+
+#boardGame{
+    background: grey;
+    /* margin: auto; */
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    flex-direction: row; 
+} 
+
+
+
+.cell_black{
+    width: 100px;
+    height: 100px;
+    background: black;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;  
+}
+
+.cell_white{
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;  
+}
+
+.cell_yellow{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;  
+}
