@@ -16,32 +16,73 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 var ref = database.ref("game_data");
+var isReady;
 // console.log(firebase);
-ref.push({ foo: "foo" })
+// ref.push({ foo: "foo" })
 
 
 function conect() {
-    var _ref;
+    firebase.database().ref().once('value', function (snapshot) {
 
-    if (refExists("data")) {
-        _ref = database.ref("data");
-        var isReady = false;
-    }
+        if (!snapshot.exists()) {
+            var initialConfig = {
+                p1: "",
+                p2: "",
+                isReady: false,
+                turn: "p1"
+            };
+            ref.push(initialConfig)
+            console.log("created data_base")
+        }
+
+    });
+
+    ref.on('value', function (data) {
+        var configs = data.val();
+        var keys = Object.keys(configs);
+        console.log(keys);
+        var p1 = configs[keys[0]].p1;
+        var p1ref = database.ref("game_data/" + keys[0] + "/p1");
+        var p2ref = database.ref("game_data/" + keys[0] + "/p2");
+
+        var p2 = configs[keys[0]].p2;
+        var isReady = configs[keys[0]].isReady;
+        var turn = configs[keys[0]].turn;
+        // p1.setValue("dupa");
+        // p2.setValue("dupa2");
+        p1ref.set("dupa");
+        p2ref.set("dupa!!!!!!!!!!!!!");
+
+        console.log(p1 + p2 + isReady + turn);
+
+    })
+
+    // var gameDataRef;
+    // ref.on("value", function (snapshot) {
+    //     gameDataRef = snapshot.val();
+    //     var testGameRef = database.ref("game_data/" + keys[0]);
+    //     var p1 = database.ref("game_data/" + keys[0] + "/p1");
+    //     console.log(p1);
+    // })
 
 }
 
 
 function refExists(path) {
-    firebase.database().child(path).once('value', (snap) => {
-        if (snap.val() !== null) {
-            return true;
-        }
-        return false;
-    });
+    // var exists;
+    console.log(firebase.database().ref().child(path) !== null);
+    return firebase.database().ref().child(path) !== null;
+    // firebase.database().ref().once('value', function (snapshot) {
+    //     // exists = snapshot.hasChild(path);
+    //     // console.log(snapshot.hasChild(path));
+    //     // console.log("checking if database exists" + exists);
+    //     // return exists;
+    //     return snapshot.hasChild(path);
+    // });
 }
 
 function addRef(newPath, data) {
-    firebase.database().child(newPath).set(data);
+    firebase.database().ref(newPath).set(data);
 }
 
 function checkIfReady() {
@@ -50,3 +91,5 @@ function checkIfReady() {
         return snapshotVal.isReady;
     })
 }
+
+conect();
