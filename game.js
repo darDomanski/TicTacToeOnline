@@ -1,5 +1,52 @@
 
 
+var config = {
+    apiKey: "AIzaSyCENIRqsKGqcAJE9P8Q_Q91fMUtWURBnXc",
+    authDomain: "roomin-d98c5.firebaseapp.com",
+    databaseURL: "https://roomin-d98c5.firebaseio.com",
+    projectId: "roomin-d98c5",
+    // storageBucket: "",
+    storageBucket: "roomin-d98c5.appspot.com",
+    messagingSenderId: "206298316730"
+};
+
+firebase.initializeApp(config);
+console.log(firebase);
+
+var database = firebase.database();
+var ref = database.ref("game_data");
+
+// var data_temp = {
+//     a2: "crosses"
+// }
+// ref.push(data_temp);
+
+
+var ref = database.ref('game_data');
+ref.on('value', gotData, errData );
+
+// ostatniobiekt
+function gotData(data){
+    // console.log(data.val());
+    var game = data.val();
+    var keys = Object.keys(game);
+    var last_id = keys[keys.length-1];
+
+    alert("last id : "+last_id);
+    alert("klucz : "+Object.keys(game[last_id]));
+    alert("wartosc : "+game[last_id][ Object.keys(game[last_id]) ]);
+
+}
+
+
+function errData(err){
+    console.log("Error ");
+    console.log("err");
+}
+
+
+
+
 function check(){
     //create variabels
     // for (var i=1;i<4;i++){
@@ -145,12 +192,11 @@ function clear_board ( ){
     var allkeys = Object.keys(cells);
     for (var i =0; i<allkeys.length; i++){
         cells[allkeys[i]]= "empty";  
-
         console.log( cells );
     }
 }
 
-document.getElementById("newTour").addEventListener("click", clear_board )
+// document.getElementById("newTour").addEventListener("click", clear_board )
 
 
 function move(){
@@ -167,6 +213,11 @@ function move(){
             // console.log(cells);
             send_cross_noughts( cells[idCell], "crosses" )
             flag =1;
+            let temp_object = {  } 
+            temp_object[idCell] = "crosses" ;
+            
+            ref.push(  temp_object  );
+
         } else if (flag === 1) {
             counter++;
             document.getElementById(idCell).className = "noughts";
@@ -177,6 +228,11 @@ function move(){
             // console.log(cells);
             send_cross_noughts( cells[idCell], "noughts" )
             flag = 0;
+
+            let temp_object = {  } 
+            temp_object[idCell] = "noughts"; 
+
+            ref.push( temp_object );
         }
 
         check();
