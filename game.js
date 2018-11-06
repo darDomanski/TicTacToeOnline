@@ -31,11 +31,8 @@ function gotData(data){
     var game = data.val();
     var keys = Object.keys(game);
     var last_id = keys[keys.length-1];
-
-    alert("last id : "+last_id);
-    alert("klucz : "+Object.keys(game[last_id]));
-    alert("wartosc : "+game[last_id][ Object.keys(game[last_id]) ]);
-
+    var temp_value = game[last_id][ Object.keys(game[last_id])];
+    document.getElementById( Object.keys(game[last_id]) ).className = temp_value;
 }
 
 
@@ -43,8 +40,6 @@ function errData(err){
     console.log("Error ");
     console.log("err");
 }
-
-
 
 
 function check(){
