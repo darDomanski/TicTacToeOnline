@@ -20,7 +20,6 @@ function check(){
         document.getElementById("a2").className === "crosses" &&
         document.getElementById("a3").className === "crosses"    ){
         alert("crosses won !!!")
-      
     }
 
     if( document.getElementById("b1").className === "crosses" &&
@@ -126,24 +125,27 @@ var counter = 0
 var flag =0;
 
 function move(){
-    var id_cell = event.srcElement.id;
+    var idCell = event.srcElement.id;
     // console.log(id_cell);
-    if( document.getElementById(id_cell).className === "empty" ){
+    if( document.getElementById(idCell).className === "empty" ){
 
         if ( flag === 0){
             counter++;
-            document.getElementById(id_cell).className = "crosses";
-            console.log("cell id : "+cells.id_cell);
-            cells.id_cell = "crosses";
-            console.log( document.getElementById(id_cell).className  );
-            console.log(cells);
+            document.getElementById(idCell).className = "crosses";
+            // console.log("cell id : "+idCell);
+            // console.log( "class name : "+document.getElementById(idCell).className  );
+            cells[idCell]="crosses";
+            // console.log(cells);
+
             flag =1;
         } else if (flag === 1) {
             counter++;
-            document.getElementById(id_cell).className = "noughts";
-            cells.id_cell = "noughts"
-            console.log( document.getElementById(id_cell).className  );
-            console.log(cells);
+            document.getElementById(idCell).className = "noughts";
+
+            // console.log("cell id : "+idCell);
+            // console.log( "class name : "+document.getElementById(idCell).className  );
+            cells[idCell] = "noughts";
+            // console.log(cells);
             flag = 0;
         }
         check();
