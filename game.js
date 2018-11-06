@@ -1,6 +1,5 @@
 
 
-
 function check(){
     //create variabels
     // for (var i=1;i<4;i++){
@@ -118,11 +117,41 @@ function check(){
 var cells = { a1:"empty", a2:"empty", a3:"empty",
                 b1:"empty", b2:"empty", b3:"empty",
                 c1:"empty", c2:"empty", c3:"empty", }
-
+                
 console.log(cells);
+
+
+// var cells_from_firebase = { a1:"empty", a2:"empty", a3:"empty",
+//                         b1:"empty", b2:"crosses", b3:"empty",
+//                         c1:"empty", c2:"empty", c3:"empty", }
+
+// function load_cross_noughts( a2, "crosses" ){
+function load_cross_noughts( key, value ){    
+    cells[key] = value;
+}
+
+
+function send_cross_noughts( key, value ){    
+    return key, value;
+}
 
 var counter = 0
 var flag =0;
+
+
+function clear_board ( ){    
+    // console.log(cells);
+    // console.log(allkeys);
+    var allkeys = Object.keys(cells);
+    for (var i =0; i<allkeys.length; i++){
+        cells[allkeys[i]]= "empty";  
+
+        console.log( cells );
+    }
+}
+
+document.getElementById("newTour").addEventListener("click", clear_board )
+
 
 function move(){
     var idCell = event.srcElement.id;
@@ -136,7 +165,7 @@ function move(){
             // console.log( "class name : "+document.getElementById(idCell).className  );
             cells[idCell]="crosses";
             // console.log(cells);
-
+            send_cross_noughts( cells[idCell], "crosses" )
             flag =1;
         } else if (flag === 1) {
             counter++;
@@ -146,10 +175,21 @@ function move(){
             // console.log( "class name : "+document.getElementById(idCell).className  );
             cells[idCell] = "noughts";
             // console.log(cells);
+            send_cross_noughts( cells[idCell], "noughts" )
             flag = 0;
         }
+
         check();
+
     } else  { alert("is prohibited"); }
+    // console.log(cells);
+    // var allkeys = Object.keys(cells);
+    // console.log(allkeys);
+
+    // for (var i =0; i<allkeys.length; i++){
+    //     console.log( cells[allkeys[i]]  );
+    // }
+    console.log( cells );
 }
 
 var cell = document.getElementsByClassName("empty");
