@@ -17,6 +17,15 @@ var gameId = null;
 var playerSign = null; // crosses or noughts
 var gameHasStarted = false;
 
+var winCombinations = [["a1", "a2", "a3"],
+                       ["b1", "b2", "b3"],
+                       ["c1", "c2", "c3"],
+                       ["a1", "b1", "c1"],
+                       ["a2", "b2", "c2"],
+                       ["a3", "b3", "c3"],
+                       ["a1", "b2", "c3"],
+                       ["a3", "b2", "c1"]];
+
 // $$$$$$$$ before game starts $$$$$$$$
 
 var logInButton = document.getElementById("log_in_btn");
@@ -118,6 +127,38 @@ function displayGameStatus() {
     }
 }
 
-function check() {
-    // TODO
+function check() {    
+    if (playerHasWon("crosses")) {
+        alert("crosses won !!!");
+    } else if (playerHasWon("noughts")) {
+        alert("noughts won !!! !!!");
+    } else if (isDraw()) {
+        alert("draw !!! !!!");
+    }
+}
+
+function playerHasWon(player) {
+    for (let combination of winCombinations) {
+        if (this.combinationIsFilled(combination, player)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function combinationIsFilled(combination, player) {
+    for (let currentId of combination) {
+        if (document.getElementById(currentId).className !== player) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isDraw() {
+    let emptyCells = document.getElementsByClassName("empty");
+    if (emptyCells.length === 0) {
+        return true;
+    }
+    return false;
 }
