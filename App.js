@@ -88,8 +88,17 @@ function move(event) {
     if (gameConfig.turn === playerName) {
         let clickedFieldId = event.target.id;
         gameConfig.fields[clickedFieldId] = playerSign;
+        gameConfig.turn = getOtherPlayer();
         displayGameStatus();
         // update gameStatus in database
+    }
+}
+
+function getOtherPlayer() {
+    if (gameConfig.player1.name === playerName) {
+        return gameConfig.player2.name;
+    } else {
+        return gameConfig.player1.name;
     }
 }
 
