@@ -158,7 +158,7 @@ var flag =0;
 function move(){
     var idCell = event.srcElement.id;
     // console.log(id_cell);
-    if( document.getElementById(idCell).className === "empty" ){
+    if( document.getElementById(idCell).className === "empty"  ){
 
         if ( flag === 0){
             counter++;
