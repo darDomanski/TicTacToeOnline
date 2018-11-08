@@ -14,6 +14,7 @@ var config = {
 firebase.initializeApp(config);
 var gameDataBaseRef = firebase.database().ref("games");
 var gameByIdRef = null;
+window.onbeforeunload = deleteDataBase;
 
 
 var lap = new Audio("resources/lap.wav");
