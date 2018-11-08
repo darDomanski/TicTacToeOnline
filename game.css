@@ -122,7 +122,6 @@ header span,
     border-style: solid;
     border-width: 5px;
     border-color: gray;
-
 }
 
 #middle {
@@ -173,7 +172,6 @@ header span,
 
 }
 
-
 footer {
     /* display: flex; */
     display: block;
@@ -206,5 +204,73 @@ footer {
     border-width: 5px;
     border-color: gray;
     color: gray; 
+
+}
+
+#won { 
+
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 50px;
+    width: 300px;
+    height: 40px;
+    background: black;
+
+    color: yellow; 
+    text-align: center;
+
+    padding: 30px;
+   
+    position: absolute;
+
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+
+    transform: rotate(5deg);
+}
+
+#lost { 
+
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 50px;
+    width: 300px;
+    height: 40px;
+    background: black;
+
+    color: white; 
+    text-align: center;
+  
+    padding: 30px;
+
+    position: absolute;
+
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+
+    transform: rotate(-10deg);
+}
+
+#draw { 
+
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 50px;
+    width: 300px;
+    height: 40px;
+    background: black;
+
+    color: grey; 
+    text-align: center;
+
+    padding: 30px;
+
+    position: absolute;
+
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
 
 }
