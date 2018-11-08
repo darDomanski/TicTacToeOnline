@@ -1,17 +1,21 @@
 // $$$$$$$$ initialization $$$$$$$$
 
-// var config = {
-//     apiKey: "AIzaSyD187jIjmdW-ajoiJHAo_NT7yDrZjhuj_s",
-//     authDomain: "tictactoe-b6020.firebaseapp.com",
-//     databaseURL: "https://tictactoe-b6020.firebaseio.com",
-//     projectId: "tictactoe-b6020",
-//     storageBucket: "",
-//     messagingSenderId: "903488103673"
-// };
+
+var config = {
+    apiKey: "AIzaSyD187jIjmdW-ajoiJHAo_NT7yDrZjhuj_s",
+    authDomain: "tictactoe-b6020.firebaseapp.com",
+    databaseURL: "https://tictactoe-b6020.firebaseio.com",
+    projectId: "tictactoe-b6020",
+    storageBucket: "",
+    messagingSenderId: "903488103673"
+};
 
 firebase.initializeApp(config);
 var gameDataBaseRef = firebase.database().ref("games");
 var gameByIdRef = null;
+
+
+var lap = new Audio("resources/lap.wav");
 
 var playerName = "";
 var initialConfig = {
@@ -132,6 +136,7 @@ function hideDivByID(divId) {
 function move(event) {
     if (gameConfig.turn === playerName) {
         let clickedFieldId = event.target.id;
+        lap.play();
         gameConfig.fields[clickedFieldId] = playerSign;
         gameConfig.turn = getOtherPlayer();
         displayGameStatus();
