@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,14 +16,14 @@
     <header>
         <h1>TIC <span>TAC</span> TOE</h1>
     </header>
-    
+
     <section id="login" class="visible">
         <label for="player_name">Player name:</label>
         <input type="text" id="player_name" name="player_name">
         <button id="log_in_btn">Log in!</button>
     </section>
 
-    <section id="won" class="visible">
+    <section id="won" class="hidden">
         YOU WON!!!
     </section>
 
@@ -31,36 +32,40 @@
     </section>
 
     <section id="draw" class="hidden">
-           IS DRAW. 
+        IS DRAW.
+    </section>
+
+    <section id="waiting_for_player" class="hidden">
+        WAITING FOR THE SECOND PLAYER...
     </section>
 
     <section id="game_board" class="hidden">
 
-        <div id = "boardGame">
+        <div id="boardGame">
 
-            <div id = "rowA" class="row"> 
-                <div id ="a1" class="empty" ></div>
-                <div id ="a2" class="empty" ></div>
-                <div id ="a3" class="empty" ></div>
+            <div id="rowA" class="row">
+                <div id="a1" class="empty"></div>
+                <div id="a2" class="empty"></div>
+                <div id="a3" class="empty"></div>
             </div>
 
-            <div id = "rowB" class="row"> 
-                <div id ="b1" class="empty" ></div>
-                <div id ="b2" class="empty" ></div>
-                <div id ="b3" class="empty" ></div>
+            <div id="rowB" class="row">
+                <div id="b1" class="empty"></div>
+                <div id="b2" class="empty"></div>
+                <div id="b3" class="empty"></div>
             </div>
 
-            <div id = "rowC" class="row"> 
-                <div id ="c1" class="empty" ></div>
-                <div id ="c2" class="empty" ></div>
-                <div id ="c3" class="empty" > </div>
+            <div id="rowC" class="row">
+                <div id="c1" class="empty"></div>
+                <div id="c2" class="empty"></div>
+                <div id="c3" class="empty"> </div>
             </div>
-        
 
-            <div id = "rowPlayer" > 
-                <div id = "player_1" class="nonActiv" >TOMASZ </div>
-                <div id = "middle" ></div>
-                <div id = "player_2" class="activ" >DARO</div>
+
+            <div id="rowPlayer">
+                <div id="player_1" class="nonActiv">TOMASZ </div>
+                <div id="middle"></div>
+                <div id="player_2" class="activ">DARO</div>
             </div>
 
         </div>
@@ -68,28 +73,28 @@
 
 
     <footer>
-            <div id = "rowName" class="row" > 
-                <div  class="foot_cell" >Daro</div>
-                <div  class="foot_cell" >Tomasz</div>
-                <div  class="foot_cell" >Roman</div>
-            </div>
+        <div id="rowName" class="row">
+            <div class="foot_cell">Daro</div>
+            <div class="foot_cell">Tomasz</div>
+            <div class="foot_cell">Roman</div>
+        </div>
 
-            <div  class="row"> 
+        <div class="row">
 
-                <div  class="foot_cell" >Michu</div>
-                <div  class="foot_cell_black" >
-                        Copyrights&copy; 2018 by Authors
-                </div>
-                <div  class="foot_cell_black" >
-                            all rights reserved.
-                </div>
+            <div class="foot_cell">Michu</div>
+            <div class="foot_cell_black">
+                Copyrights&copy; 2018 by Authors
             </div>
+            <div class="foot_cell_black">
+                all rights reserved.
+            </div>
+        </div>
 
     </footer>
 
 </body>
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-    <script src="App.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script src="App.js"></script>
 
 </html>
