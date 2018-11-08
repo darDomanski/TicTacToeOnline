@@ -70,3 +70,10 @@ body {
     border-width: 5px;
     border-color: gray; 
 }
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}

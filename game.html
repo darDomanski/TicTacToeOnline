@@ -16,8 +16,14 @@
     <header>
         <h1>TIC <span>TAC</span> TOE</h1>
     </header>
+    
+    <section id="login" class="visible">
+        <label for="player_name">Player name:</label>
+        <input type="text" id="player_name" name="player_name">
+        <button id="log_in_btn">Log in!</button>
+    </section>
 
-    <section class="scores">
+    <!-- <section class="scores">
         <div class="scores-container"> 
             <div id="player1" class="score-board">DARO</div>
             <div id="score1" class="score-board">: </div>
@@ -27,9 +33,10 @@
             <div id="score1" class="score-board">: </div>
             <div id="score2" class="score-board">0</div>
         </div>
-    </section>
+    </section> -->
 
     <div>
+    <section id="game_board" class="hidden">
 
         <div id = "boardGame">
 
@@ -103,7 +110,7 @@
         </div>
 
 
-    </div>
+    </section>
 
 
     <footer>
@@ -113,7 +120,6 @@
 
     
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-    <script src="game.js"></script>
-    <!-- <script src="firebase.js"></script> -->
+    <script src="App.js"></script>
 
 </html>
