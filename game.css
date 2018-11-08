@@ -274,3 +274,26 @@ footer {
     margin-right: auto; 
 
 }
+
+#waiting_for_player { 
+
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 50px;
+    width: 300px;
+    height: 150px;
+    background: black;
+
+    color: grey; 
+    text-align: center;
+
+    padding: 30px;
+
+    position: absolute;
+
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
+    transform: rotate(5deg);
+
+}
