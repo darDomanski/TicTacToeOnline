@@ -110,7 +110,7 @@ header span,
 }
 
 
-#player_1 {
+#player1 {
 
     font-family: 'Luckiest Guy', cursive;
     font-size: x-large;
@@ -142,9 +142,9 @@ header span,
     border-color: gray;  
 }
 
-#player_2 {
+#player2 {
 
-    /* display: inline-block; */
+
     font-family: 'Luckiest Guy', cursive;
     font-size: x-large;
     text-align: right;

@@ -2,12 +2,13 @@
 
 
 var config = {
-    apiKey: "AIzaSyD187jIjmdW-ajoiJHAo_NT7yDrZjhuj_s",
-    authDomain: "tictactoe-b6020.firebaseapp.com",
-    databaseURL: "https://tictactoe-b6020.firebaseio.com",
-    projectId: "tictactoe-b6020",
-    storageBucket: "",
-    messagingSenderId: "903488103673"
+    apiKey: "AIzaSyCENIRqsKGqcAJE9P8Q_Q91fMUtWURBnXc",
+    authDomain: "roomin-d98c5.firebaseapp.com",
+    databaseURL: "https://roomin-d98c5.firebaseio.com",
+    projectId: "roomin-d98c5",
+    // storageBucket: "",
+    storageBucket: "roomin-d98c5.appspot.com",
+    messagingSenderId: "206298316730"
 };
 
 firebase.initializeApp(config);
@@ -77,9 +78,8 @@ function joinGame() {
         gameConfig.isReady = true;
         playerSign = "noughts";
         gameByIdRef.set(gameConfig);
-        setListenerOnDatabase();
+        setListenerOnDatabase();;
     })
-
 }
 
 function createGame() {
@@ -110,6 +110,8 @@ function gotData(data) {
 function startGame() {
     registerEventListenersOnFields();
     showSection("game_board");
+    document.getElementById("player2").innerHTML = gameConfig.player2.name;
+    document.getElementById("player1").innerHTML = gameConfig.player1.name;
     
 }
 
@@ -134,21 +136,23 @@ function hideDivByID(divId) {
 // $$$$$$$$ game has started $$$$$$$$
 
 function move(event) {
-    if (gameConfig.turn === playerName) {
+    if (gameConfig.turn === playerName && event.target.className === "empty") {
         let clickedFieldId = event.target.id;
         lap.play();
         gameConfig.fields[clickedFieldId] = playerSign;
         gameConfig.turn = getOtherPlayer();
         displayGameStatus();
         gameByIdRef.set(gameConfig);
+
     }
+
 }
 
 function getOtherPlayer() {
     if (gameConfig.player1.name === playerName) {
         return gameConfig.player2.name;
     } else {
-        return gameConfig.player1.name;
+        return gameConfig.player1.name; 
     }
 }
 
@@ -165,6 +169,18 @@ function displayGameStatus() {
     
     for (let name of fieldNames) {
         document.getElementById(name).className = gameConfig.fields[name];
+    }
+
+
+    if( gameConfig.player1.name === gameConfig.turn  ){
+
+        document.getElementById("player1").setAttribute("class", "activ");
+        document.getElementById("player2").setAttribute("class", "nonActiv");
+
+    }else{  
+
+        document.getElementById("player2").setAttribute("class", "activ");
+        document.getElementById("player1").setAttribute("class", "nonActiv");
     }
 }
 
