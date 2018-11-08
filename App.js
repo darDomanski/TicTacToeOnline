@@ -35,11 +35,16 @@ function logIn() {
     playerName = document.getElementById("player_name").value;
     
     if (isAvailableGame()) {
+        hideDivByID("login");
         // get game ID
         joinGame();
+        
     } else {
+        hideDivByID("login");
         createGame();
+        
     }
+
 }
 
 function isAvailableGame() {
@@ -76,6 +81,7 @@ function gotData(data) {
 function startGame() {
     registerEventListenersOnFields();
     showSection("game_board");
+    
 }
 
 function showSection(sectionID) {
@@ -90,6 +96,11 @@ function hideAllSections() {
         section.className = "hidden";
     }
 }
+
+function hideDivByID(divId) {
+    document.getElementById(divId).className = "hidden";
+}
+
 
 // $$$$$$$$ game has started $$$$$$$$
 

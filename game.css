@@ -36,6 +36,11 @@ header span,
     font-size: 1vw;
 } */
 
+#login{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 
 #boardGame{
     background: grey;
@@ -47,6 +52,12 @@ header span,
     justify-content: center;
     flex-direction: row; 
 } 
+
+#rowPlayer{
+    display: flex;
+    justify-content: center;
+    flex-direction: row; 
+}
 
 .empty{
     width: 100px;
@@ -122,12 +133,13 @@ header span,
     border-width: 5px;
     border-color: gray; 
 }
+
 .hidden {
     display: none;
 }
 
 .visible {
-    display: block;
+    /* display: block; */
     border-color: gray;  
 }
 
