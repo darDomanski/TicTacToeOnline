@@ -1,5 +1,7 @@
 // $$$$$$$$ initialization $$$$$$$$
 
+var lap = new Audio("resources/lap.wav");
+
 var playerName = "";
 var initialConfig = {
         player1: { name: "" },
@@ -107,6 +109,7 @@ function hideDivByID(divId) {
 function move(event) {
     if (gameConfig.turn === playerName) {
         let clickedFieldId = event.target.id;
+        lap.play();
         gameConfig.fields[clickedFieldId] = playerSign;
         gameConfig.turn = getOtherPlayer();
         displayGameStatus();
