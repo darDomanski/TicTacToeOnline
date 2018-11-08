@@ -128,7 +128,7 @@ function move(event) {
         gameConfig.fields[clickedFieldId] = playerSign;
         gameConfig.turn = getOtherPlayer();
         displayGameStatus();
-        // update gameStatus in database
+        gameByIdRef.set(gameConfig);
     }
 }
 
