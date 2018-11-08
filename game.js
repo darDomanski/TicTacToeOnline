@@ -42,7 +42,7 @@ function gotData(data){
     var temp_value = game[last_id][ Object.keys(game[last_id])];
     console.log(game[last_id]);
     document.getElementById( Object.keys( game[last_id]) ).className = temp_value;
-
+    
 }
 
 

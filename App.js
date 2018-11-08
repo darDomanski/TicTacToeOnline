@@ -1,5 +1,7 @@
 // $$$$$$$$ initialization $$$$$$$$
 
+
+
 var lap = new Audio("resources/lap.wav");
 
 var playerName = "";
