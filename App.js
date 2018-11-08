@@ -1,5 +1,17 @@
 // $$$$$$$$ initialization $$$$$$$$
 
+var config = {
+    apiKey: "AIzaSyD187jIjmdW-ajoiJHAo_NT7yDrZjhuj_s",
+    authDomain: "tictactoe-b6020.firebaseapp.com",
+    databaseURL: "https://tictactoe-b6020.firebaseio.com",
+    projectId: "tictactoe-b6020",
+    storageBucket: "",
+    messagingSenderId: "903488103673"
+};
+firebase.initializeApp(config);
+var gameDataBaseRef = firebase.database().ref("games");
+var gameByIdRef = null;
+
 var playerName = "";
 var initialConfig = {
         player1: { name: "" },
@@ -12,7 +24,7 @@ var initialConfig = {
         turn: "",
         isReady: false
     };
-var gameConfig = initialConfig;
+var gameConfig = Object.create(initialConfig);
 var gameId = null;
 var playerSign = null; // crosses or noughts
 var gameHasStarted = false;
@@ -32,36 +44,43 @@ var logInButton = document.getElementById("log_in_btn");
 logInButton.addEventListener('click', logIn);
 
 function logIn() {
-    playerName = document.getElementById("player_name").value;
-    
-    if (isAvailableGame()) {
-        // get game ID
-        joinGame();
-    } else {
-        createGame();
+    if (playerName === "") {
+        playerName = document.getElementById("player_name").value;
     }
+    joinOrCreate();
+    
 }
 
-function isAvailableGame() {
-    // look for game in database
-    return false;
+function joinOrCreate() {
+    gameDataBaseRef.once('value').then(data => data.val()).then(data => {
+        for (let key in data) {
+            if (!data[key].isReady) {
+                gameId = key;
+                gameByIdRef = firebase.database().ref("games/" + key);
+                joinGame();
+            }
+        }
+        createGame();
+    })
 }
 
 function joinGame() {
-    // set gameConfig = object from database
-    gameConfig.player2.name = playerName;
-    gameConfig.isReady = true;
-    playerSign = "noughts";
-    // push gameConfig to database
+    gameByIdRef.once('value').then(data => data.val()).then(data => {
+        gameConfig = data;
+        gameConfig.player2.name = playerName;
+//      gameConfig.isReady = true;
+        playerSign = "noughts";
+        gameByIdRef.set(gameConfig);
+        console.log(gameConfig);
+    })
+
 }
 
 function createGame() {
     gameConfig.player1.name = playerName;
     gameConfig.turn = playerName;
     playerSign = "crosses";
-    // push gameConfig to database and get gameId
-    gameConfig.isReady = true; // temp for testing
-    gotData(); // temp for testing
+    gameDataBaseRef.push(gameConfig);
 }
 
 function gotData(data) {
@@ -161,4 +180,13 @@ function isDraw() {
         return true;
     }
     return false;
+}
+
+function newGame() {
+    gameConfig = initialConfig;
+    var gameId = null;
+    var playerSign = null;
+    var gameHasStarted = false;
+    logIn();
+    
 }
