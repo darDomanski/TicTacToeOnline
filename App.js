@@ -19,29 +19,29 @@ var lap = new Audio("resources/lap.wav");
 
 var playerName = "";
 var initialConfig = {
-        player1: { name: "" },
-        player2: { name: "" },
-        fields: {
-            a1: "empty", a2: "empty", a3: "empty",
-            b1: "empty", b2: "empty", b3: "empty",
-            c1: "empty", c2: "empty", c3: "empty"
-        },
-        turn: "",
-        isReady: false
-    };
+    player1: { name: "" },
+    player2: { name: "" },
+    fields: {
+        a1: "empty", a2: "empty", a3: "empty",
+        b1: "empty", b2: "empty", b3: "empty",
+        c1: "empty", c2: "empty", c3: "empty"
+    },
+    turn: "",
+    isReady: false
+};
 var gameConfig = JSON.parse(JSON.stringify(initialConfig));
 var gameId = null;
 var playerSign = null; // crosses or noughts
 var gameHasStarted = false;
 
 var winCombinations = [["a1", "a2", "a3"],
-                       ["b1", "b2", "b3"],
-                       ["c1", "c2", "c3"],
-                       ["a1", "b1", "c1"],
-                       ["a2", "b2", "c2"],
-                       ["a3", "b3", "c3"],
-                       ["a1", "b2", "c3"],
-                       ["a3", "b2", "c1"]];
+["b1", "b2", "b3"],
+["c1", "c2", "c3"],
+["a1", "b1", "c1"],
+["a2", "b2", "c2"],
+["a3", "b3", "c3"],
+["a1", "b2", "c3"],
+["a3", "b2", "c1"]];
 
 // $$$$$$$$ before game starts $$$$$$$$
 
@@ -53,7 +53,7 @@ function logIn() {
         playerName = document.getElementById("player_name").value;
     }
     joinOrCreate();
-    
+
 }
 
 function joinOrCreate() {
@@ -92,6 +92,8 @@ function createGame() {
     gameByIdRef.once('value').then(data => {
         setListenerOnDatabase();
     })
+    showSection("waiting_for_player");
+
 }
 
 function setListenerOnDatabase() {
@@ -110,7 +112,7 @@ function gotData(data) {
 function startGame() {
     registerEventListenersOnFields();
     showSection("game_board");
-    
+
 }
 
 function showSection(sectionID) {
@@ -120,7 +122,7 @@ function showSection(sectionID) {
 
 function hideAllSections() {
     let sections = document.getElementsByTagName("section");
-    
+
     for (let section of sections) {
         section.className = "hidden";
     }
@@ -154,7 +156,7 @@ function getOtherPlayer() {
 
 function registerEventListenersOnFields() {
     let fields = document.getElementsByClassName("empty");
-    
+
     for (let field of fields) {
         field.addEventListener('click', move);
     }
@@ -162,19 +164,32 @@ function registerEventListenersOnFields() {
 
 function displayGameStatus() {
     let fieldNames = Object.keys(gameConfig.fields);
-    
+
     for (let name of fieldNames) {
         document.getElementById(name).className = gameConfig.fields[name];
     }
 }
 
-function check() {    
+function check() {
     if (playerHasWon("crosses")) {
-        alert("crosses won !!!");
+        deleteDataBase();
+        if (playerSign == "crosses") {
+            showSection("won");
+        } else {
+            showSection("lose");
+        }
     } else if (playerHasWon("noughts")) {
-        alert("noughts won !!! !!!");
+        deleteDataBase();
+        if (playerSign == "crosses") {
+            showSection("lost");
+        } else {
+            showSection("won");
+        }
+
     } else if (isDraw()) {
-        alert("draw !!! !!!");
+        deleteDataBase();
+        showSection("draw");
+
     }
 }
 
@@ -210,5 +225,9 @@ function newGame() {
     var playerSign = null;
     var gameHasStarted = false;
     logIn();
-    
+}
+
+function deleteDataBase() {
+    gameByIdRef.off();
+    gameByIdRef.remove();
 }
