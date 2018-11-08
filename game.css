@@ -2,6 +2,40 @@ body {
     background: grey;
 }
 
+header {
+    display: flex;
+
+}
+
+header h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 3vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 5%; */
+    margin-bottom: 1%; 
+}
+
+header span,
+#vs {
+    color: yellow;
+}
+
+/* .scores {
+    display: flex;
+} */
+
+/* .scores-container {
+    margin: auto;
+}
+
+.score-board {
+    display: inline-block;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1vw;
+} */
+
 
 #boardGame{
     background: grey;
@@ -14,8 +48,6 @@ body {
     flex-direction: row; 
 } 
 
-
-
 .empty{
     width: 100px;
     height: 100px;
@@ -23,16 +55,22 @@ body {
     border-style: solid;
     border-width: 5px;
     border-color: gray;  
+    cursor: pointer;
 }
 
 .noughts{
-    width: 100px;
+    width: 100px;s
     height: 100px;
     background: white;
     border-style: solid;
     border-width: 5px;
-    border-color: gray;  
+    border-color: gray; 
+    background-image: url("resources/zero.jpg");
+    background-size: 100% 100%;
+    -webkit-transform:rotate(-2deg);
+    -moz-transform:rotate(-2deg);
 }
+
 
 .crosses{
     width: 100px;
@@ -40,32 +78,46 @@ body {
     background: yellow;
     border-style: solid;
     border-width: 5px;
-    border-color: gray;  
+    border-color: gray; 
+    background-image: url("resources/cros.jpg"); 
+    background-size: 100% 100%;
+    -webkit-transform: rotate(182deg);
+    -moz-transform:rotate(182deg);
 }
 
-
-#newTour{
+.crosses1{
     width: 100px;
     height: 100px;
-    background: rgb(75, 75, 57);
+    background: yellow;
     border-style: solid;
     border-width: 5px;
     border-color: gray; 
+    background-image: url("resources/cros.jpg"); 
+    background-size: 100% 100%;
+    -webkit-transform: rotate(182deg);
+    -moz-transform:rotate(182deg);
 }
 
-#newGame{
+
+#player_1 {
+
+    font-family: 'Luckiest Guy', cursive;
+    font-size: x-large;
+    border-width: 5px;
+
     width: 100px;
-    height: 100px;
-    background:rgb(75, 75, 57);
+    height: 50px;
+    background: gray;
     border-style: solid;
     border-width: 5px;
-    border-color: gray; 
+    border-color: gray;
+
 }
 
-#exit{
+#middle {
     width: 100px;
-    height: 100px;
-    background: rgb(75, 75, 57);
+    height: 50px;
+    background: gray;
     border-style: solid;
     border-width: 5px;
     border-color: gray; 
@@ -76,4 +128,71 @@ body {
 
 .visible {
     display: block;
+    border-color: gray;  
+}
+
+#player_2 {
+
+    /* display: inline-block; */
+    font-family: 'Luckiest Guy', cursive;
+    font-size: x-large;
+    text-align: right;
+    
+    width: 100px;
+    height: 50px;
+    background: gray;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;  
+}
+    
+.nonActiv {
+    color: black;
+}
+
+.activ {
+    color: grey;
+    animation: flash 1.3s infinite linear;
+}
+
+@keyframes flash {
+    50% {color: grey;}
+	50% {color: white;}
+
+}
+
+
+footer {
+    /* display: flex; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 1%;
+    margin-bottom: 10%; */
+}
+
+.foot_cell{
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 25px;
+    width: 100px;
+    height: 15px;
+    background: white;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;
+    color: gray; 
+
+}
+
+.foot_cell_black{
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 10px;
+    width: 100px;
+    height: 15px;
+    background: white;
+    border-style: solid;
+    border-width: 5px;
+    border-color: gray;
+    color: gray; 
+
 }

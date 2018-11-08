@@ -33,9 +33,9 @@ function initDataBase() {
             var gamedata = id.ref();
             gamedata.push({ foo: "foo" });
         }
-
     });
 };
+
 
 function setNewValueToDataBaseRecord(recordName, newValue) {
     let key = this.getKeyOfDataBase();

@@ -1,13 +1,12 @@
-header {
+/* header {
     display: flex;
     margin-top: 2%;
 
-}
-header h1 {
+} */
+/* header h1 {
     font-family: 'Luckiest Guy', cursive;
     font-size: 3vw;
     margin: auto;
-
 }
 
 header span,
@@ -18,11 +17,17 @@ header span,
 .scores {
     display: flex;
 }
+
 .scores-container {
     margin: auto;
 }
+
 .score-board {
     display: inline-block;
     font-family: 'Luckiest Guy', cursive;
     font-size: 1vw;
-}
+} */
+
+
+
+

@@ -1,4 +1,19 @@
 
+var playerName;
+
+var gameConfig = {
+    player1: { name: "", score: 0 },
+    player2: { name: "", score: 0 },
+    fields: {
+        a1: "empty", a2: "empty", a3: "empty",
+        b1: "empty", b2: "empty", b3: "empty",
+        c1: "empty", c2: "empty", c3: "empty"
+    },
+    turn: "player1",
+    isReady: false
+};
+
+console.log(gameConfig)
 
 var config = {
     apiKey: "AIzaSyCENIRqsKGqcAJE9P8Q_Q91fMUtWURBnXc",
@@ -25,8 +40,12 @@ function gotData(data){
     var keys = Object.keys(game);
     var last_id = keys[keys.length-1];
     var temp_value = game[last_id][ Object.keys(game[last_id])];
-    document.getElementById( Object.keys(game[last_id]) ).className = temp_value;
+    console.log(game[last_id]);
+    document.getElementById( Object.keys( game[last_id]) ).className = temp_value;
+
 }
+
+
 
 function errData(err){
     console.log("Error ");
@@ -34,24 +53,81 @@ function errData(err){
 }
 
 
-// var time = new Date().getUTCMilliseconds();
-// var timestamp=time +""+ randomnumber;
+function initDataBase() {
+    console.log("Works");
+    firebase.database().ref().once('value', function (snapshot) {
 
+        if (!snapshot.exists()) {
+            var initialConfig = {
+                player1: { name: "", score: 0 },
+                player2: { name: "", score: 0 },
+                fields: {
+                    a1: "empty", a2: "empty", a3: "empty",
+                    b1: "empty", b2: "empty", b3: "empty",
+                    c1: "empty", c2: "empty", c3: "empty"
+                },
+                turn: "player1",
+                isReady: false
+            };
+            var id = firebase.database().ref().push(initialConfig)
+            console.log(id + "Data base not found! Initialized new game data base.")
+
+            var gamedata = id.ref();
+            gamedata.push({ foo: "foo" });
+        }
+    });
+};
+
+initDataBase();
+
+            
+var counter = 0
+var flag =0;
+
+function move(){
+
+    var idCell = event.srcElement.id;
+    // console.log(id_cell);
+    if( document.getElementById(idCell).className === "empty"  ){
+
+        if ( flag === 0){
+            counter++;
+
+            // var rand = Math.floor(Math.random()*4);
+            // console.log(rand);
+            document.getElementById(idCell).className = "crosses";
+
+            flag =1;
+
+            let temp_object = {  } 
+            temp_object[idCell] = "crosses" ;
+            ref.push(  temp_object  );
+
+
+        } else if (flag === 1) {
+            counter++;
+            document.getElementById(idCell).className = "noughts";
+            flag = 0;
+
+            let temp_object = {  } 
+            temp_object[idCell] = "noughts";
+            ref.push( temp_object );
+
+            gameConfig.fields[idCell] = "noughts";
+            console.log(gameConfig);
+        }
+        check();
+
+    } else  { alert("is prohibited"); }
+    // console.log( cells );
+}
+
+var cell = document.getElementsByClassName("empty");
+for(j=0;j<cell.length;j++){
+    cell[j].addEventListener('click', move, false);
+}
 
 function check(){
-    //create variabels
-    // for (var i=1;i<4;i++){
-    //     var a = "a"+i;
-    //     var a = document.getElementById(a).className;
-    //     var b = "b"+i;
-    //     var b = document.getElementById(b).className;
-    //     var c = "a"+i;
-    //     var c = document.getElementById(c).className;
-    // }
-
-    // console.log(a1);
-    // console.log(a2);
-    // console.log(a3);
 
     if( document.getElementById("a1").className === "crosses" &&
         document.getElementById("a2").className === "crosses" &&
@@ -150,58 +226,6 @@ function check(){
         alert("noughts won !!! !!!")
     }
 }
-
-              
-var counter = 0
-var flag =0;
-
-function move(){
-    var idCell = event.srcElement.id;
-    // console.log(id_cell);
-    if( document.getElementById(idCell).className === "empty"  ){
-
-        if ( flag === 0){
-            counter++;
-            document.getElementById(idCell).className = "crosses";
-            flag =1;
-            let temp_object = {  } 
-            temp_object[idCell] = "crosses" ;
-            
-            ref.push(  temp_object  );
-
-        } else if (flag === 1) {
-            counter++;
-            document.getElementById(idCell).className = "noughts";
-            flag = 0;
-            let temp_object = {  } 
-            temp_object[idCell] = "noughts"; 
-
-            ref.push( temp_object );
-        }
-
-        check();
-
-    } else  { alert("is prohibited"); }
-    console.log( cells );
-}
-
-
-var cell = document.getElementsByClassName("empty");
-for(j=0;j<cell.length;j++){
-    cell[j].addEventListener('click', move, false);
-}
-
-  
-// function clear_board ( ){    
-//     var allkeys = Object.keys(cells);
-//     for (var i =0; i<allkeys.length; i++){
-//         cells[allkeys[i]]= "empty";  
-//         console.log( cells );
-//     }
-// }
-
-
-    
 
 
 

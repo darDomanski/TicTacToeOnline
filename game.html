@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="game.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="footer_header.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="footer_header.css" /> -->
     
 </head>
 
@@ -23,25 +23,11 @@
         <button id="log_in_btn">Log in!</button>
     </section>
 
-    <!-- <section class="scores">
-        <div class="scores-container"> 
-            <div id="player1" class="score-board">DARO</div>
-            <div id="score1" class="score-board">: </div>
-            <div id="score1" class="score-board">0</div>
-            <div id="vs" class="score-board"> VS </div>
-            <div id="player2" class="score-board">MIHU</div>
-            <div id="score1" class="score-board">: </div>
-            <div id="score2" class="score-board">0</div>
-        </div>
-    </section> -->
 
-    <div>
-    <section id="game_board" class="hidden">
 
-        <div id = "boardGame">
+    <div id="game_board" class="hidden">
 
             <div id = "rowA" class="row"> 
-
                 <div id ="a1" class="empty" >
 
                 </div>
@@ -53,11 +39,9 @@
                 <div id ="a3" class="empty" >
 
                 </div>
-
             </div>
 
             <div id = "rowB" class="row"> 
-
                 <div id ="b1" class="empty" >
 
                 </div>
@@ -69,11 +53,9 @@
                 <div id ="b3" class="empty" >
 
                 </div>
-
             </div>
 
             <div id = "rowC" class="row"> 
-
 
                 <div id ="c1" class="empty" >
 
@@ -86,39 +68,62 @@
                 <div id ="c3" class="empty" >
 
                 </div>
-        
             </div>
-
         </div>
 
 
         <div id = "rowC" class="row"> 
-
-
-            <div id = "newTour" >New tour
+            <div id = "player_1" class="nonActiv" >TOMASZ 
 
             </div>
 
-            <div id = "newGame" >New game
+            <div id = "middle" >
 
             </div>
 
-            <div id = "exit" >Exit
+            <div id = "player_2" class="activ" >DARO
 
             </div>
-            
         </div>
 
 
-    </section>
+    
+    </div>
 
 
     <footer>
+            <div id = "rowC" class="row"> 
+
+                <div  class="foot_cell" >Daro
+                </div>
+
+                <div  class="foot_cell" >Tomasz
+                </div>
+
+                <div  class="foot_cell" >Roman
+                </div>
+            </div>
+
+
+            <div  class="row"> 
+
+                <div  class="foot_cell" >Michu
+
+                </div>
+
+                <div  class="foot_cell_black" >
+                        Copyrights&copy; 2018 by Authors
+                </div>
+
+                <div  class="foot_cell_black" >
+                            all rights reserved.
+                </div>
+            </div>
+
     </footer>
-    
+
 </body>
 
-    
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <script src="App.js"></script>
 
