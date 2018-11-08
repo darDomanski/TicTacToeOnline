@@ -24,7 +24,7 @@ var initialConfig = {
         turn: "",
         isReady: false
     };
-var gameConfig = Object.create(initialConfig);
+var gameConfig = JSON.parse(JSON.stringify(initialConfig));
 var gameId = null;
 var playerSign = null; // crosses or noughts
 var gameHasStarted = false;
@@ -58,6 +58,7 @@ function joinOrCreate() {
                 gameId = key;
                 gameByIdRef = firebase.database().ref("games/" + key);
                 joinGame();
+                return;
             }
         }
         createGame();
@@ -68,23 +69,32 @@ function joinGame() {
     gameByIdRef.once('value').then(data => data.val()).then(data => {
         gameConfig = data;
         gameConfig.player2.name = playerName;
-//      gameConfig.isReady = true;
+        gameConfig.isReady = true;
         playerSign = "noughts";
         gameByIdRef.set(gameConfig);
-        console.log(gameConfig);
+        setListenerOnDatabase();
     })
 
 }
 
 function createGame() {
+    console.log("create");
     gameConfig.player1.name = playerName;
     gameConfig.turn = playerName;
     playerSign = "crosses";
-    gameDataBaseRef.push(gameConfig);
+    gameId = gameDataBaseRef.push(gameConfig).key;
+    gameByIdRef = firebase.database().ref("games/" + gameId);
+    gameByIdRef.once('value').then(data => {
+        setListenerOnDatabase();
+    })
+}
+
+function setListenerOnDatabase() {
+    gameByIdRef.on('value', gotData);
 }
 
 function gotData(data) {
-    // set gameConfig = object from database
+    gameConfig = data.val();
     if (!gameHasStarted && gameConfig.isReady) {
         startGame();
     }
