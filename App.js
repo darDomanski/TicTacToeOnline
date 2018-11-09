@@ -6,7 +6,6 @@ var config = {
     authDomain: "roomin-d98c5.firebaseapp.com",
     databaseURL: "https://roomin-d98c5.firebaseio.com",
     projectId: "roomin-d98c5",
-    // storageBucket: "",
     storageBucket: "roomin-d98c5.appspot.com",
     messagingSenderId: "206298316730"
 };
