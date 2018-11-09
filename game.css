@@ -17,7 +17,6 @@ header h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 5%; */
     margin-bottom: 1%; 
 }
 
@@ -26,30 +25,59 @@ header span,
     color: yellow;
 }
 
-/* .scores {
-    display: flex;
-} */
-
-/* .scores-container {
-    margin: auto;
-}
-
-.score-board {
-    display: inline-block;
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 1vw;
-} */
-
 #login{
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
-    
+}
+
+#login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login label {
+    margin: auto;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#login input {
+    height: 40px;
+    width: 200px;
+    align-self: center;
+    font-size: 95%;
+    text-align: center;
+    border: none;
+    background: yellow;
+    font-family: 'Luckiest Guy', cursive;
+
+}
+
+#login button {
+    margin-top: 20px;
+    height: 40px;
+    width: 100px;
+    align-self: center;
+    font-size: 95%;
+    color: azure;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    background: black;;
+    border: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+#login button:hover {
+    background: rgb(68, 65, 65);
+    cursor: pointer;
 }
 
 #boardGame{
     background: grey;
-    /* margin: auto; */
 }
 
 .row{
@@ -143,7 +171,6 @@ header span,
 }
 
 .visible {
-    /* display: block; */
     border-color: gray;  
 }
 
@@ -177,12 +204,10 @@ header span,
 }
 
 footer {
-    /* display: flex; */
     display: block;
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 1%;
-    margin-bottom: 10%; */
+    margin-bottom: 10vh;
 }
 
 .foot_cell{
@@ -213,7 +238,7 @@ footer {
 
 #won { 
 
-    /* top: 20vw; */
+    top: 20vw;
 
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
@@ -238,7 +263,7 @@ footer {
 
 #lost { 
 
-    /* top: 20vw; */
+    top: 20vw;
 
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
@@ -263,7 +288,7 @@ footer {
 
 #draw { 
 
-    c
+    top: 20vw;
 
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
@@ -287,7 +312,7 @@ footer {
 
 #waiting_for_player { 
 
-    /* top: 20vw; */
+    top: 20vw;
 
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
