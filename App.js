@@ -18,6 +18,8 @@ window.onbeforeunload = deleteDataBase;
 
 
 var lap = new Audio("resources/lap.wav");
+var stamp = new Audio("resources/stamp.wav");
+var applau = new Audio("resources/applau.wav");
 
 var playerName = "";
 var initialConfig = {
@@ -94,6 +96,7 @@ function createGame() {
         setListenerOnDatabase();
     })
     showSection("waiting_for_player");
+    stamp.play();
 
 }
 
@@ -143,12 +146,19 @@ function move(event) {
         let clickedFieldId = event.target.id;
         lap.play();
         gameConfig.fields[clickedFieldId] = playerSign;
+
+        document.getElementById(clickedFieldId).style.transform = "rotate("+randomRotate()+"deg)";
+    
         gameConfig.turn = getOtherPlayer();
         displayGameStatus();
         gameByIdRef.set(gameConfig);
-
     }
+}
 
+function randomRotate(){
+    let angle = [-2,2,92,-92,-182, 182 ];
+    let position = Math.floor(Math.random() * 6);
+    return angle[position];
 }
 
 function getOtherPlayer() {
@@ -172,6 +182,7 @@ function displayGameStatus() {
 
     for (let name of fieldNames) {
         document.getElementById(name).className = gameConfig.fields[name];
+        
     }
 
 
@@ -192,6 +203,7 @@ function check() {
         deleteDataBase();
         if (playerSign == "crosses") {
             showSection("won");
+            applau.play();
         } else {
             showSection("lost");
         }
@@ -201,6 +213,7 @@ function check() {
             showSection("lost");
         } else {
             showSection("won");
+            applau.play();
         }
 
     } else if (isDraw()) {

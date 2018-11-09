@@ -7,7 +7,6 @@ body {
 }
 
 header {
-    margin-top: 10vh;
     display: flex;
 
 }
@@ -45,49 +44,7 @@ header span,
     text-align: center;
     margin-top: 50px;
     margin-bottom: 50px;
-    /* display: flex; */
-
-    /* flex-direction: column; */
-}
-
-#login label {
-    margin: auto;
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 40px;
-    text-align: center;
-    vertical-align: middle;
-}
-
-#login input {
-    height: 40px;
-    width: 15%;
-    align-self: center;
-    font-size: 95%;
-    text-align: center;
-    border: none;
-    background: yellow;
-    font-family: 'Luckiest Guy', cursive;
-
-}
-
-#login button {
-    margin-top: 20px;
-    height: 40px;
-    width: 5%;
-    align-self: center;
-    font-size: 95%;
-    color: azure;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-    background: black;;
-    border: none;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-}
-
-#login button:hover {
-    background: rgb(68, 65, 65);
-    cursor: pointer;
+    
 }
 
 #boardGame{
@@ -126,8 +83,8 @@ header span,
     border-color: gray; 
     background-image: url("resources/zero.jpg");
     background-size: 100% 100%;
-    -webkit-transform:rotate(-2deg);
-    -moz-transform:rotate(-2deg);
+    transform:rotate(-2deg);
+ 
 }
 
 
@@ -140,8 +97,8 @@ header span,
     border-color: gray; 
     background-image: url("resources/cros.jpg"); 
     background-size: 100% 100%;
-    -webkit-transform: rotate(182deg);
-    -moz-transform:rotate(182deg);
+    transform: rotate(182deg);
+   
 }
 
 .crosses1{
@@ -217,7 +174,6 @@ header span,
 @keyframes flash {
     50% {color: grey;}
 	50% {color: white;}
-
 }
 
 footer {
@@ -225,7 +181,6 @@ footer {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10vh;
     /* margin-top: 1%;
     margin-bottom: 10%; */
 }
@@ -258,6 +213,8 @@ footer {
 
 #won { 
 
+    /* top: 20vw; */
+
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
     width: 300px;
@@ -280,6 +237,8 @@ footer {
 }
 
 #lost { 
+
+    /* top: 20vw; */
 
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
@@ -304,6 +263,8 @@ footer {
 
 #draw { 
 
+    c
+
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
     width: 300px;
@@ -326,6 +287,8 @@ footer {
 
 #waiting_for_player { 
 
+    /* top: 20vw; */
+
     font-family: 'Luckiest Guy', cursive;
     font-size: 50px;
     width: 300px;
@@ -343,7 +306,6 @@ footer {
     right: 0; 
     margin-left: auto; 
     margin-right: auto;
-    margin-top: 10vh;
     transform: rotate(5deg);
 
 }
