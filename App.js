@@ -1,16 +1,15 @@
 // $$$$$$$$ initialization $$$$$$$$
 
-
 var config = {
-    apiKey: "AIzaSyCENIRqsKGqcAJE9P8Q_Q91fMUtWURBnXc",
-    authDomain: "roomin-d98c5.firebaseapp.com",
-    databaseURL: "https://roomin-d98c5.firebaseio.com",
-    projectId: "roomin-d98c5",
-    storageBucket: "roomin-d98c5.appspot.com",
-    messagingSenderId: "206298316730"
+    apiKey: "AIzaSyD187jIjmdW-ajoiJHAo_NT7yDrZjhuj_s",
+    authDomain: "tictactoe-b6020.firebaseapp.com",
+    databaseURL: "https://tictactoe-b6020.firebaseio.com",
+    projectId: "tictactoe-b6020",
+    storageBucket: "tictactoe-b6020.appspot.com",
+    messagingSenderId: "903488103673"
 };
-
 firebase.initializeApp(config);
+
 var gameDataBaseRef = firebase.database().ref("games");
 var gameByIdRef = null;
 window.onbeforeunload = deleteDataBase;
